@@ -1,2 +1,25 @@
-node_modules
-forkify-architecture-recipe-loading.png
+# Node.js dependencies
+node_modules/
+
+# Build and output directories
+dist/
+.parcel-cache/
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE configurations
+.vscode/
+.idea/
+
+# Environment variables
+.env
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
