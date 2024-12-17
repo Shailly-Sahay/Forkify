@@ -11,5 +11,8 @@
   "devDependencies": {
     "parcel": "^2.13.2",
     "sass": "^1.71.1"
+  },
+  "dependencies": {
+    "fracty": "^1.0.12"
   }
 }
