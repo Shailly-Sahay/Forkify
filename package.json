@@ -9,7 +9,11 @@
   "author": "Shailly Sahay",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.13.2",
     "parcel": "^2.13.2",
     "sass": "^1.71.1"
+  },
+  "dependencies": {
+    "fracty": "^1.0.12"
   }
 }
