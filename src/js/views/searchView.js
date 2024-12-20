@@ -1,6 +1,6 @@
 import View from './view';
 
-class SeacrhView {
+class SeacrhView extends View {
   _parentElement = document.querySelector('.search');
 
   getQuery() {
