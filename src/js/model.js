@@ -61,7 +61,6 @@ export const getSearchResultsPage = function (page = state.search.page) {
 };
 
 export const updateServings = function (newServings) {
-  console.log(newServings);
   state.recipe.ingredients.forEach(ing => {
     // newQt = oldQt * newServings / oldServings
     ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
