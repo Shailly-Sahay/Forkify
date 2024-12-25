@@ -6,6 +6,8 @@ import searchView from './views/searchView';
 import paginationView from './views/paginationView';
 import addRecipeView from './views/addRecipeView';
 
+import { MODAL_CLOSE_SEC } from './config';
+
 // import 'core-js';
 import 'regenerator-runtime/runtime';
 
@@ -94,8 +96,27 @@ const controlBookmarks = function () {
 };
 
 //
-const controlAddRecipe = function (newRecipe) {
-  console.log(newRecipe);
+const controlAddRecipe = async function (newRecipe) {
+  try {
+    // Spinner
+    addRecipeView.renderSpinner();
+
+    //  Upload the new recipe data
+    await model.uploadRecipe(newRecipe);
+
+    // Render recipe
+    recipeView.render(model.state.recipe);
+
+    // Success message
+    addRecipeView.renderMessage();
+
+    // Close the form
+    setTimeout(function () {
+      addRecipeView.toggleWindow();
+    }, MODAL_CLOSE_SEC * 1000);
+  } catch (err) {
+    addRecipeView.renderError(err.message);
+  }
 };
 
 // The initializing function
