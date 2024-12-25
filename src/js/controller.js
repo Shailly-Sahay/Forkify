@@ -55,7 +55,7 @@ const controlSearchresults = async function () {
     // 4) Render pagination
     paginationView.render(model.state.search);
   } catch (err) {
-    console.log(err);
+    resultsView.renderError();
   }
 };
 
@@ -109,6 +109,12 @@ const controlAddRecipe = async function (newRecipe) {
 
     // Success message
     addRecipeView.renderMessage();
+
+    // Render bookmarks view
+    bookmarksView.render(model.state.bookmarks);
+
+    // Change ID in url
+    window.history.pushState(null, '', `#${model.state.recipe.id}`);
 
     // Close the form
     setTimeout(function () {

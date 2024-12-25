@@ -8,9 +8,18 @@ const timeout = function (s) {
   });
 };
 
-export const getJSON = async function (url) {
+export const AJAX = async function (url, uploadData = undefined) {
   try {
-    const fetchPromise = fetch(url);
+    const fetchPromise = uploadData
+      ? fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(uploadData),
+        })
+      : fetch(url);
+
     const res = await Promise.race([fetchPromise, timeout(TIMEOUT)]);
     const data = await res.json();
 
@@ -18,26 +27,7 @@ export const getJSON = async function (url) {
 
     return data;
   } catch (err) {
-    throw err;
-  }
-};
-
-export const sendJSON = async function (url, uploadData) {
-  try {
-    const fetchPromise = fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(uploadData),
-    });
-    const res = await Promise.race([fetchPromise, timeout(TIMEOUT)]);
-    const data = await res.json();
-
-    if (!res.ok) throw new Error(`${data.message} (${res.staus})`);
-
-    return data;
-  } catch (err) {
+    console.log(err);
     throw err;
   }
 };
