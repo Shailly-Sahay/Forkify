@@ -43,6 +43,3 @@ Forkify makes cooking fun, easy, and personalized. Dive in and whip up something
    ```
 
 Now, you're all set to explore Forkify in your browser! 🎉
-
---dist-dir ./dist
-"default": "index.html",
